@@ -1,13 +1,11 @@
 public class Main {
 
     public static void main (String[] args)
+            throws java.io.IOException
     {
-        Board tictactoe = new Board();
 
+        Game game = new Game();
+        game.run();
 
-        tictactoe.putPlayer(0, 0);
-        System.out.println(tictactoe.toString());
-
-        System.out.println(tictactoe.isValidField(2,2));
     }
 }

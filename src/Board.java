@@ -4,6 +4,8 @@ public class Board {
     public static final int NUMBER_OF_ROWS = 5;
     public static final int NUMBER_OF_COLUMNS = 5;
 
+    // Player position holds the x and y coordinates for the current player position,
+    // or an int array of length 2
     int [] playerPosition = new int [2];
 
     // Print the board
@@ -30,17 +32,17 @@ public class Board {
         }
     }
 
+    // This will check if the suggested field is valid, which is an even number for both x and y
+    // between 0 and 4.
     public boolean isValidField(int x, int y) {
         return (x % 2 == 0 && y % 2 == 0 && x >= 0 && x <= 4 && y >= 0 && y <= 4);
     }
 
-
     public void putPlayer(int x, int y)  {
-        playerPosition[1] = x; // column
-        playerPosition[0] = y; // row
+        playerPosition[1] = 0; // column
+        playerPosition[0] = 0; // row
         board[playerPosition[0]][playerPosition[1]] = "[ ]";
     }
-
 
     public String toString() {
         StringBuilder printBoard = new StringBuilder();
