@@ -27,4 +27,12 @@ public class Field {
         }
         return sb.toString();
     }
+
+    public void markField(String player) {
+
+        if (player.equals("user"))
+            mark = " X ";
+        else
+            mark = " O ";
+    }
 }

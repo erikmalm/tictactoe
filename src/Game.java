@@ -10,22 +10,62 @@ public class Game {
     }
 
     public void run()
-
     {
-        longBreak();
-        System.out.println(tictactoe.toString());
 
-        Scanner in = new Scanner (System.in);
+        boolean keepRunning = true;
 
-        String userMove = in.nextLine();
+        while (keepRunning) {
+            printBoard(tictactoe);
 
-        System.out.println(userMove);
-        System.out.println(tictactoe.isValidField(userMove));
+            // User move
+            System.out.print("Make your move: ");
+            Scanner in = new Scanner(System.in);
+            String userMove = in.nextLine();
+            tictactoe.makeMove(userMove);
+            keepRunning = !tictactoe.checkForWinner("user");
+
+            if (!keepRunning)
+                break;
+
+
+            printBoard(tictactoe);
+            System.out.print("Please wait for the computer to finish their turn...");
+            pause(2);
+
+            tictactoe.computer();
+            keepRunning = !tictactoe.checkForWinner("computer");
+        }
+
+        printBoard(tictactoe);
+        System.out.println("GAME OVER");
+        if (tictactoe.checkForWinner("user"))
+            System.out.println("Player won");
+        else if (tictactoe.checkForWinner("computer"))
+            System.out.println("Player lost");
+        else
+            System.out.println("It's a tie!");
     }
+
 
     private void longBreak() {
         for (int i = 0; i < 30; i ++)
             System.out.println("");
+    }
+
+    private static void pause(int i) {
+        try
+        {
+            Thread.sleep(i * 1000);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    public void printBoard(Board board) {
+        longBreak();
+        System.out.println(board);
     }
 
 
