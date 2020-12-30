@@ -1,5 +1,4 @@
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
 
@@ -13,11 +12,15 @@ public class Game {
     public void run()
 
     {
-
         longBreak();
-
         System.out.println(tictactoe.toString());
 
+        Scanner in = new Scanner (System.in);
+
+        String userMove = in.nextLine();
+
+        System.out.println(userMove);
+        System.out.println(tictactoe.isValidField(userMove));
     }
 
     private void longBreak() {
