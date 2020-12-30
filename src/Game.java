@@ -27,6 +27,8 @@ public class Game {
             if (!keepRunning)
                 break;
 
+            if (tictactoe.countPossibleMoves() == 0)
+                break;
 
             printBoard(tictactoe);
             System.out.print("Please wait for the computer to finish their turn...");

@@ -8,10 +8,6 @@ public class Board {
     public static final int NUMBER_OF_ROWS = 5;
     public static final int NUMBER_OF_COLUMNS = 5;
 
-    // Player position holds the x and y coordinates for the current player position,
-    // or an int array of length 2
-    int [] playerPosition = new int [2];
-
     // Print the board
     Field [][] board = new Field [NUMBER_OF_ROWS][NUMBER_OF_COLUMNS];
 
@@ -34,7 +30,7 @@ public class Board {
         // Make the first row, row A
         char rowLetter = 65;
 
-        for (int i = 0; i < 5; i ++) {
+        for (int i = 0; i < NUMBER_OF_ROWS; i ++) {
 
             // If game section, print the current row letter and increment 1
             if (i % 2 == 0) {
@@ -44,7 +40,7 @@ public class Board {
             else
                 printBoard.append("  ");
 
-            for (int j = 0; j < 5; j++) {
+            for (int j = 0; j < NUMBER_OF_COLUMNS; j++) {
                 printBoard.append(board[i][j]);
             }
             printBoard.append("\n");
@@ -148,7 +144,7 @@ public class Board {
             performMove(computerMoves[move], "computer");
     }
 
-    private int countPossibleMoves() {
+    public int countPossibleMoves() {
 
         int possibleMoves = 0;
 
